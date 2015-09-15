@@ -34,6 +34,18 @@ module.exports.routes = {
 
   '/': {
     view: 'home'
+  },
+  'get /device': {
+    view: 'device'
+  },
+  'get /device/new': {
+    view: 'device-new'
+  },
+  'get /advertisement': {
+    view: 'advertisement'
+  },
+  'get /advertisement/new': {
+    view: 'advertisement-new'
   }
 
   /***************************************************************************
