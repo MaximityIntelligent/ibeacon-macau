@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="css/skins/_all-skins.min.css">
     <!-- iCheck -->
     <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,18 +113,75 @@
           <div class="row">
                 <!-- left column -->
             <div class="col-md-6">
+            <div class="row">
+            <!-- Left col -->
+              <div class="btn-group"><a class="btn btn-lg success" href="/device/new">New</a></div>
+            
+            
+            </div><!-- /.row (main row) -->
+
+              
+              <div class="box">
+                
+                <div class="box-body">
+                  <table id="device-table" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Point</th>
+                        <th>State</th>
+                        <th>City</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <%
+                        var device;
+                        while (devices.length) {
+                          //code
+                          device = devices.pop();
+                      %>
+                      <tr>
+                        <td><%=device.name%></td>
+                        <td><%=device.type%></td>
+                        <td><%=device.location%></td>
+                        <td><%=device.point%></td>
+                        <td><%=device.state%></td>
+                        <td><%=device.city%></td>
+                      </tr>
+                      <%
+                          
+                        }
+                      %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
               <!-- general form elements -->
               
             </div>
           </div><!-- /.row -->
           <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            <div class="btn-group"><a class="btn btn-lg success" href="/device/new">New</a></div>
-            
-            
-          </div><!-- /.row (main row) -->
-
+          
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -311,7 +370,21 @@
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="js/demo.js"></script>
     <!-- Morris.js charts -->
-    
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script>
+      $(function () {
+        $('#device-table').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
+
 
     <!-- AdminLTE App -->
     <script src="js/app.min.js"></script>

@@ -36,17 +36,36 @@ module.exports.routes = {
     view: 'home'
   },
   'get /device': {
-    view: 'device'
+    controller: 'DeviceController',
+    action: 'view'
+  },
+  'post /device': {
+    controller: 'DeviceController',
+    action: 'create'
+  },
+  'put /device': {
+    controller: 'DeviceController',
+    action: 'update'
   },
   'get /device/new': {
     view: 'device-new'
   },
   'get /advertisement': {
-    view: 'advertisement'
+    controller: 'AdvertisementController',
+    action: 'view'
+  },
+  'post /advertisement': {
+    controller: 'AdvertisementController',
+    action: 'create'
+  },
+  'put /advertisement': {
+    controller: 'AdvertisementController',
+    action: 'update'
   },
   'get /advertisement/new': {
     view: 'advertisement-new'
-  }
+  },
+  
 
   /***************************************************************************
   *                                                                          *
