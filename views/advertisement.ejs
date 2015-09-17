@@ -101,8 +101,9 @@
             
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Advertisement</li>
+            <li><a href="/">home</a></li>
+            <li class="active"><a href="/advertisement">advertisement</a></li>
+            
           </ol>
         </section>
 
@@ -112,7 +113,7 @@
           
           <div class="row">
                 <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
               <!-- general form elements --><div class="row">
             <!-- Left col -->
             <div class="btn-group"><a class="btn btn-lg success" href="/advertisement/new">New</a></div>
@@ -132,6 +133,8 @@
                         <th>Frequency</th>
                         <th>Valid Date</th>
                         <th>Pick Location</th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -143,12 +146,15 @@
                           ad = advertisements.pop();
                       %>
                       <tr>
-                        <td><%=ad.title%></td>
-                        <td><%=ad.imageurl%></td>
+                        <td><a href="/advertisement/read/<%=ad.id%>"><%=ad.title%></a></td>
+                        <td><%=ad.image_url%></td>
                         <td><%=ad.text%></td>
                         <td><%=ad.frequency%></td>
-                        <td><%=ad.valid_date%></td>
+                        <td><%=ad.valid_date%>
+                        </td>
                         <td><%=ad.pick_location%></td>
+                        <td><a href="/advertisement/edit/<%=ad.id%>">update</a></td>
+                        <td><form action="/advertisement/destroy/<%=ad.id%>" method="post"><input type="submit" value="delete"/></form></td>
                       </tr>
                       <%
                           

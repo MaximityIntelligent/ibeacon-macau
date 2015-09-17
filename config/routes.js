@@ -39,13 +39,25 @@ module.exports.routes = {
     controller: 'DeviceController',
     action: 'view'
   },
+  'get /device/read/:id': {
+    controller: 'DeviceController',
+    action: 'read'
+  },
+  'get /device/edit/:id': {
+    controller: 'DeviceController',
+    action: 'edit'
+  },
   'post /device': {
     controller: 'DeviceController',
     action: 'create'
   },
-  'put /device': {
+  'post /device/:id': {
     controller: 'DeviceController',
     action: 'update'
+  },
+  'post /device/destroy/:id': {
+    controller: 'DeviceController',
+    action: 'delete'
   },
   'get /device/new': {
     view: 'device-new'
@@ -54,13 +66,25 @@ module.exports.routes = {
     controller: 'AdvertisementController',
     action: 'view'
   },
+  'get /advertisement/read/:id': {
+    controller: 'AdvertisementController',
+    action: 'read'
+  },
+  'get /advertisement/edit/:id': {
+    controller: 'AdvertisementController',
+    action: 'edit'
+  },
   'post /advertisement': {
     controller: 'AdvertisementController',
     action: 'create'
   },
-  'put /advertisement': {
+  'post /advertisement/:id': {
     controller: 'AdvertisementController',
     action: 'update'
+  },
+  'post /advertisement/destroy/:id': {
+    controller: 'AdvertisementController',
+    action: 'delete'
   },
   'get /advertisement/new': {
     view: 'advertisement-new'

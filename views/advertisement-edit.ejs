@@ -3,24 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Maximity Ibeacon | Devices</title>
+    <title>Maximity Tech</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../../css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../css/skins/_all-skins.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
-
+    <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,14 +44,9 @@
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
           </a>
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
               
               <!-- User Account: style can be found in dropdown.less -->
               
-              
-            </ul>
-          </div>
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
@@ -66,7 +59,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="treeview">
+            <li class="active treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Account</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -75,10 +68,10 @@
                 <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
               </ul>
             </li>
-                        
+            
             <li>
               <a href="/device">
-                <i class="fa fa-th"></i> <span>Device</span> 
+                <i class="fa fa-th"></i> <span>Device</span>
               </a>
             </li>
             <li>
@@ -86,7 +79,7 @@
                 <i class="fa fa-th"></i> <span>Advertisement</span> 
               </a>
             </li>
-
+            </li>
           </ul>
         </section>
         <!-- /.sidebar -->
@@ -97,12 +90,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Devices
-            
+            Advertisement
+            <small>edit</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/">home</a></li>
-            <li class="active"><a href="/device">device</a></li>
+            <li><a href="/advertisement">advertisement</a></li>
+            <li class="active"><a href="#">edit</a></li>
           </ol>
         </section>
 
@@ -112,80 +106,58 @@
           
           <div class="row">
                 <!-- left column -->
-            <div class="col-md-12">
-            <div class="row">
-            <!-- Left col -->
-              <div class="btn-group"><a class="btn btn-lg success" href="/device/new">New</a></div>
-            
-            
-            </div><!-- /.row (main row) -->
-
-              
-              <div class="box">
-                
-                <div class="box-body">
-                  <table id="device-table" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th>Location</th>
-                        <th>Point</th>
-                        <th>State</th>
-                        <th>City</th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      
-                      <%
-                        var device;
-                        while (devices.length) {
-                          //code
-                          device = devices.pop();
-                      %>
-                      <tr>
-                        <td><a href="/device/read/<%=device.id%>"><%=device.name%></a></td>
-                        <td><%=device.type%></td>
-                        <td><%=device.location%></td>
-                        <td><%=device.point%></td>
-                        <td><%=device.state%></td>
-                        <td><%=device.city%></td>
-                        <td><a href="/device/edit/<%=device.id%>">update</a></td>
-                        <td><form method="post" action="/device/destroy/<%=device.id%>"><input type="submit" value="delete"/></form></td>
-                      </tr>
-                      <%
-                          
-                        }
-                      %>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
+            <div class="col-md-6">
               <!-- general form elements -->
-              
+              <div class="box box-primary">
+                <form role="form" action="/advertisement/<%=advertisement.id%>" method="post">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Title</label>
+                      <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=advertisement.title%>">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Image Url</label>
+                      <input type="text" name="image_url" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.image_url%>">
+                    </div>
+                          
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Text</label>
+                      <input type="text" name="text" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.text%>">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Frequency</label>
+                      <input type="text" name="frequency" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.frequency%>">
+                    </div>
+                    <div class="form-group">
+                    <label>Valid Date</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" name="valid_date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" value="<%=advertisement.valid_date%>" data-mask>
+                    </div><!-- /.input group -->
+                    </div><!-- /.form group -->
+                    
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Pick Location</label>
+                      <input type="text" name="pick_location" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.pick_location%>">
+                    </div>
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+
             </div>
           </div><!-- /.row -->
           <!-- Main row -->
-          
+          <div class="row">
+            <!-- Left col -->
+            
+          </div><!-- /.row (main row) -->
+
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -363,38 +335,39 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
+    <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- Bootstrap 3.3.5 -->
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <script src="js/demo.js"></script>
-    <!-- Morris.js charts -->
-    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+    
+    <!-- AdminLTE for demo purposes -->
     <script>
-      $(function () {
-        $('#device-table').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
+    $(function () {
+
+        $("[data-mask]").inputmask();
+        
       });
     </script>
-
+    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/demo.js"></script>
+    <!-- Morris.js charts -->
+    
 
     <!-- AdminLTE App -->
-    <script src="js/app.min.js"></script>
+    <script src="../../js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
+    <script src="../../js/pages/dashboard.js"></script>
+    
+    
+    
+    
     
   </body>
 </html>

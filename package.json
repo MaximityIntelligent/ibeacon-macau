@@ -27,7 +27,8 @@
     "date-utils": "*",
     "passport-local": "1.0.0",
     "passport": "0.2.0",
-    "bcrypt-nodejs": "0.0.3"
+    "bcrypt-nodejs": "0.0.3",
+    "dateformat": "*"
   },
   "scripts": {
     "debug": "node debug app.js",
