@@ -150,7 +150,7 @@
                         <td><%=ad.image_url%></td>
                         <td><%=ad.text%></td>
                         <td><%=ad.frequency%></td>
-                        <td><%=ad.valid_date%>
+                        <td><%=ad.valid_date.toUTCString().substring(0, 16)%>
                         </td>
                         <td><%=ad.pick_location%></td>
                         <td><a href="/advertisement/edit/<%=ad.id%>">update</a></td>
