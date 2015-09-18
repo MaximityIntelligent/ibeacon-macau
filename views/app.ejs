@@ -3,22 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Maximity Ibeacon | Devices</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../css/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="../../css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="css/skins/_all-skins.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="../../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,14 +46,20 @@
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
           </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
               
               <!-- User Account: style can be found in dropdown.less -->
               
+              
+            </ul>
+          </div>
         </nav>
       </header>
       <!-- Left side column. contains the logo and sidebar -->
       <aside id="menu" class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
+        <!-- /.sidebar -->
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
@@ -59,13 +67,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Device
-            <small>edit</small>
+            App
+            
           </h1>
           <ol class="breadcrumb">
             <li><a href="/">home</a></li>
-            <li><a href="/device">device</a></li>
-            <li class="active"><a href="#">edit</a></li>           </ol>
+            <li class="active"><a href="/app">app</a></li>
+          </ol>
         </section>
 
         <!-- Main content -->
@@ -74,74 +82,69 @@
           
           <div class="row">
                 <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-12">
+            
+            <!-- Left col -->
+              <div class="btn-group6"><a class="btn btn-lg success" href="/app/new">New</a></div>
+            
+            
+            
+              
+              <div class="box">
+                
+                <div class="box-body">
+                  <table id="app-table" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <%
+                        var app;
+                        while (apps.length) {
+                          //code
+                          app = apps.pop();
+                      %>
+                      <tr>
+                        <td><a href="/app/read/<%=app.id%>"><%=app.name%></a></td>
+                        <td><a href="/app/edit/<%=app.id%>">update</a></td>
+                        <td><form method="post" action="/app/destroy/<%=app.id%>"><input type="submit" value="delete"/></form></td>
+                      </tr>
+                      <%
+                          
+                        }
+                      %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
               <!-- general form elements -->
-              <div class="box box-primary">
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form role="form" action="/device/<%=device.id%>" method="post">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Name</label>
-                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=device.name%>">
-                    </div>
-                    
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Type</label>
-                      <input type="text" name="type" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.type%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">UUID Major</label>
-                      <input type="text" name="uuid_major" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.uuid_major%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">UUID Minor</label>
-                      <input type="text" name="uuid_minor" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.uuid_minor%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Location</label>
-                      <input type="text" name="location" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.location%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Point</label>
-                      <input type="text" name="point" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.point%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">State</label>
-                      <input type="text" name="state" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.state%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">City</label>
-                      <input type="text" name="city" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.city%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Area</label>
-                      <input type="text" name="area" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.area%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Street</label>
-                      <input type="text" name="street" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.street%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Circle</label>
-                      <input type="text" name="circle" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.circle%>">
-                    </div>
-                  </div><!-- /.box-body -->
-
-                  <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Update</button>
-                  </div>
-                </form>
-              </div><!-- /.box -->
-
+              
             </div>
           </div><!-- /.row -->
           <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            
-          </div><!-- /.row (main row) -->
-
+          
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
@@ -319,28 +322,38 @@
     </div><!-- ./wrapper -->
 
     <!-- jQuery 2.1.4 -->
-    <script src="../../plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
+    <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
     <script>
       $.widget.bridge('uibutton', $.ui.button);
-      $(function(){
-        $('#menu').load('/user-menu');
+    </script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/demo.js"></script>
+    <!-- Morris.js charts -->
+    <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script>
+      $(function () {
+        $('#app-table').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
         });
+        $("#menu").load("/user-menu");
+      });
     </script>
 
-    <!-- Bootstrap 3.3.5 -->
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../../js/demo.js"></script>
-    <!-- Morris.js charts -->
-    
 
     <!-- AdminLTE App -->
-    <script src="../../js/app.min.js"></script>
+    <script src="js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../../js/pages/dashboard.js"></script>
+    <script src="js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     
   </body>

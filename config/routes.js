@@ -33,7 +33,15 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'home'
+    controller: 'IndexController',
+    action: 'home'
+  },
+  'get /login': {
+    view: 'login'
+  },
+  'post /login': {
+    controller: 'AuthController',
+    action: 'login'
   },
   'get /device': {
     controller: 'DeviceController',
@@ -89,7 +97,44 @@ module.exports.routes = {
   'get /advertisement/new': {
     view: 'advertisement-new'
   },
-  
+  'get /app': {
+    controller: 'AppController',
+    action: 'view'
+  },
+  'get /app/read/:id': {
+    controller: 'AppController',
+    action: 'read'
+  },
+  'get /app/edit/:id': {
+    controller: 'AppController',
+    action: 'edit'
+  },
+  'post /app': {
+    controller: 'AppController',
+    action: 'create'
+  },
+  'post /app/:id': {
+    controller: 'AppController',
+    action: 'update'
+  },
+  'post /app/destroy/:id': {
+    controller: 'AppController',
+    action: 'delete'
+  },
+  'get /app/new': {
+    view: 'app-new'
+  },
+  'get /app-advertisement/new': {
+    controller: 'AppController',
+    action: 'newAdvertisement'
+    },
+  'post /app-advertisement': {
+    controller: 'AppController',
+    action: 'createAdvertisement'
+  },
+  'get /user-menu': {
+    view: 'user-menu'
+  }
 
   /***************************************************************************
   *                                                                          *

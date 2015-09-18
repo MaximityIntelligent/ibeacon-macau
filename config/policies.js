@@ -48,4 +48,35 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+    DeviceController: {
+        'find': 'isLoggedIn',
+        'read': 'isLoggedIn',
+        'create': 'isLoggedIn',
+        'view': 'isLoggedIn',
+        'edit': 'isLoggedIn',
+        'delete': 'isLoggedIn'
+    },
+    AdvertisementController: {
+        'find': 'isLoggedIn',
+        'read': 'isLoggedIn',
+        'create': 'isLoggedIn',
+        'view': 'isLoggedIn',
+        'edit': 'isLoggedIn',
+        'delete': 'isLoggedIn'
+    },
+    AppController: {
+        'find': 'isLoggedIn',
+        'read': 'isLoggedIn',
+        'create': 'isLoggedIn',
+        'view': 'isLoggedIn',
+        'edit': 'isLoggedIn',
+        'delete': 'isLoggedIn',
+        'home': 'isLoggedIn',
+        'createAdvertisement': 'isLoggedIn'
+        
+    }
+    
+    
+    
+    
 };

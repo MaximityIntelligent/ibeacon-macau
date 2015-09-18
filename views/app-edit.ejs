@@ -51,7 +51,7 @@
       </header>
       <!-- Left side column. contains the logo and sidebar -->
       <aside id="menu" class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
+
       </aside>
 
       <!-- Content Wrapper. Contains page content -->
@@ -59,12 +59,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Device
+            App
             <small>edit</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/">home</a></li>
-            <li><a href="/device">device</a></li>
+            <li><a href="/app">app</a></li>
             <li class="active"><a href="#">edit</a></li>           </ol>
         </section>
 
@@ -79,53 +79,13 @@
               <div class="box box-primary">
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form" action="/device/<%=device.id%>" method="post">
+                <form role="form" action="/app/<%=app.id%>" method="post">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Name</label>
-                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=device.name%>">
+                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=app.name%>">
                     </div>
                     
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Type</label>
-                      <input type="text" name="type" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.type%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">UUID Major</label>
-                      <input type="text" name="uuid_major" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.uuid_major%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">UUID Minor</label>
-                      <input type="text" name="uuid_minor" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.uuid_minor%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Location</label>
-                      <input type="text" name="location" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.location%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Point</label>
-                      <input type="text" name="point" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.point%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">State</label>
-                      <input type="text" name="state" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.state%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">City</label>
-                      <input type="text" name="city" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.city%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Area</label>
-                      <input type="text" name="area" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.area%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Street</label>
-                      <input type="text" name="street" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.street%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Circle</label>
-                      <input type="text" name="circle" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.circle%>">
-                    </div>
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
@@ -323,14 +283,11 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="../../plugins/jQueryUI/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
     <script>
-      $.widget.bridge('uibutton', $.ui.button);
       $(function(){
-        $('#menu').load('/user-menu');
+      $("#menu").load("/user-menu");  
         });
     </script>
-
     <!-- Bootstrap 3.3.5 -->
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <script src="../../js/demo.js"></script>

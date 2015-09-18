@@ -21,7 +21,7 @@ module.exports = {
                 validDate = new Date(validDateArr[2], validDateArr[1]-1, validDateArr[0]);
             }
         }
-        advertisement.create({title: title, image_url: image_url, text: text, frequency: frequency, valid_date: validDate, pick_location: pick_location}).exec(function(err, ad){
+        advertisement.create({user: req.session.user.id, title: title, image_url: image_url, text: text, frequency: frequency, valid_date: validDate, pick_location: pick_location}).exec(function(err, ad){
             if (err) {
                 //code
                 res.view('500');
@@ -71,7 +71,7 @@ module.exports = {
             });
     },
     view: function(req, res){
-        advertisement.find().exec(function(err, advertisements){
+        advertisement.find({user: req.session.user.id}).exec(function(err, advertisements){
             res.view('advertisement', {advertisements: advertisements});
             });
     },
