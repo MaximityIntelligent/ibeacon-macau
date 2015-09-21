@@ -89,6 +89,13 @@ module.exports = {
             }
             res.redirect('/advertisement');
             })
+    },
+    deviceToDeploy: function(req, res){
+        var id = req.param('id');
+        device.find().exec(function(err, devices){
+            res.view('advertisement-device-deploy', {devices: devices});    
+            });
+        
     }
     
 	

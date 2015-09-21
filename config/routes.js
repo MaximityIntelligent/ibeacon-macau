@@ -138,6 +138,10 @@ module.exports.routes = {
   'get /app-advertisement/edit/:id': {
     controller: 'AppController',
     action: 'editAdvertisement'
+  },
+  'get /advertisement/deploy/:id': {
+    controller: 'AdvertisementController',
+    action: 'deviceToDeploy'
   }
 
   /***************************************************************************
