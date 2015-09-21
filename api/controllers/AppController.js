@@ -27,7 +27,8 @@ module.exports = {
     },
     read: function(req, res){
         var id = req.param('id');
-        app.findOne({id: id}).exec(function(err, app2){
+        app.findOne({id: id}).populate('has_advertisement').exec(function(err, app2){
+			
             res.view('app-read', {app: app2});
             })  
     },
@@ -89,7 +90,14 @@ module.exports = {
             res.redirect('/app/read/'+appId);
             return;
             });
-    }
+    },
+	editAdvertisement: function(req, res){
+		var adId = req.param('id');
+		advertisement.findOne({id: adId}).exec(function(err, ad){
+			res.view('app-advertisement-edit', {advertisement: ad});	
+			});
+		
+	}
     
 };
 

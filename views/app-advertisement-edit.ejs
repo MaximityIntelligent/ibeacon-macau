@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Maximity Tech</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -51,6 +51,7 @@
       </header>
       <!-- Left side column. contains the logo and sidebar -->
       <aside id="menu" class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
         <!-- /.sidebar -->
       </aside>
 
@@ -59,13 +60,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            App
-            <small></small>
+            Advertisement
+            <small>edit</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="/">home</a></li>
-            <li><a href="/app">app</a></li>
-            <li class="active"><a href="#">read</a></li>
+            <li><a href="/advertisement">advertisement</a></li>
+            <li class="active"><a href="#">edit</a></li>
           </ol>
         </section>
 
@@ -75,101 +76,59 @@
           
           <div class="row">
                 <!-- left column -->
-            <div class="col-md-12">
+            <div class="col-md-6">
               <!-- general form elements -->
               <div class="box box-primary">
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form role="form">
+                <form role="form" action="/advertisement/<%=advertisement.id%>?r=<%=req.param('r')%>" method="post">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Name</label>
-                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=app.name%>">
+                      <label for="exampleInputEmail1">Title</label>
+                      <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=advertisement.title%>">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Image Url</label>
+                      <input type="text" name="image_url" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.image_url%>">
+                    </div>
+                          
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Text</label>
+                      <input type="text" name="text" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.text%>">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Frequency</label>
+                      <input type="text" name="frequency" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.frequency%>">
+                    </div>
+                    <div class="form-group">
+                    <label>Valid Date</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" name="valid_date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" value="<%=advertisement.valid_date%>" data-mask>
+                    </div><!-- /.input group -->
+                    </div><!-- /.form group -->
+                    
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Pick Location</label>
+                      <input type="text" name="pick_location" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=advertisement.pick_location%>">
                     </div>
                   </div><!-- /.box-body -->
 
-                  </form>
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                  </div>
+                </form>
               </div><!-- /.box -->
-              <div class="btn-group"><a class="btn btn-lg success" href="/app-advertisement/new?app=<%=app.id%>">Create Advertisement</a></div>
 
             </div>
           </div><!-- /.row -->
           <!-- Main row -->
           <div class="row">
-                <!-- left column -->
-            <div class="col-md-12">
-              <!-- general form elements -->
-              <div class="box box-primary">
-
-
-                  <table id="advertisement-table" class="table table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>Title</th>
-                        <th>Image Url</th>
-                        <th>Text</th>
-                        <th>Frequency</th>
-                        <th>Valid Date</th>
-                        <th>Pick Location</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      
-                      <%
-                      var ad;
-                      
-                      var advertisements = app.has_advertisement;
-                      
-                      
-                      while (advertisements.length) {
-                        //code
-                        ad = advertisements.pop();
-                      %>
-                      <tr>
-                      <td><!--<a href="/advertisement/read/<%=ad.id%>"></a>--><%=ad.title%></td>
-                      <td><%=ad.image_url%></td>
-                      <td><%=ad.text%></td>
-                      <td><%=ad.frequency%></td>
-                      <td>
-                        <% if (ad.valid_date!=null) {
-                          //code
-                          %>
-                          <%=ad.valid_date.toUTCString().substring(0, 16)%>
-                          <%
-                        }
-                        %>
-                      </td>
-                      <td><%=ad.pick_location%></td>
-                      <td><a href="/app-advertisement/edit/<%=ad.id%>?r=/app/read/<%=app.id%>">update</a></td>
-                      <td><form action="/advertisement/destroy/<%=ad.id%>?r=/app/read/<%=app.id%>" method="post"><input type="submit" value="delete"/></form></td>
-                      <td><a href="/advertisement/deploy/<%=ad.id%>">deploy</a></td>
-                      </tr>
-                      <%
-                        
-                      }
-                      %>
-                    </tbody>
-                  </table>
-
-
-
-
-
-
-
-
-
-              </div><!-- /.box -->
-              
-            </div>
-          </div><!-- /.row -->
+            <!-- Left col -->
+            
+          </div><!-- /.row (main row) -->
 
         </section><!-- /.content -->
-     
-     
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -352,11 +311,20 @@
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
       $.widget.bridge('uibutton', $.ui.button);
-      $(function(){
-        $("#menu").load("/user-menu");
-        })
     </script>
+    <script src="../../plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
     <!-- Bootstrap 3.3.5 -->
+    
+    <!-- AdminLTE for demo purposes -->
+    <script>
+    $(function () {
+
+        $("[data-mask]").inputmask();
+        $("#menu").load("/user-menu");        
+      });
+    </script>
     <script src="../../bootstrap/js/bootstrap.min.js"></script>
     <script src="../../js/demo.js"></script>
     <!-- Morris.js charts -->
@@ -366,7 +334,10 @@
     <script src="../../js/app.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
+    
+    
+    
+    
     
   </body>
 </html>

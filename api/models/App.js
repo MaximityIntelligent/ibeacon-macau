@@ -10,6 +10,10 @@ module.exports = {
   attributes: {
     user: {
         model: 'user'
+    },
+    has_advertisement: {
+        collection: 'advertisement',
+        via: 'app'
     }
   }
 };

@@ -13,7 +13,8 @@ module.exports = {
     },
     app: {
         model: 'app'
-    }
+    },
+    
   }
 };
 

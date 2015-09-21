@@ -134,6 +134,10 @@ module.exports.routes = {
   },
   'get /user-menu': {
     view: 'user-menu'
+  },
+  'get /app-advertisement/edit/:id': {
+    controller: 'AppController',
+    action: 'editAdvertisement'
   }
 
   /***************************************************************************

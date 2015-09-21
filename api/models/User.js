@@ -8,6 +8,14 @@
 module.exports = {
   identity: 'user',
   attributes: {
+  has_app: {
+    collection: 'app',
+    via: 'user'
+  },
+  has_advertisement: {
+    collection: 'advertisement',
+    via: 'user'
+  }
 
   }
 };

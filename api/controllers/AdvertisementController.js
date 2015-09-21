@@ -66,6 +66,11 @@ module.exports = {
                 res.view('500');
                 return;
             }
+            console.log(req.param('r'));
+            if (req.param('r')) {
+                res.redirect(req.param('r'));
+                return;
+            }
             res.redirect('/advertisement');
             return;
             });
@@ -78,6 +83,10 @@ module.exports = {
     delete: function(req, res){
         var id = req.param('id');
         advertisement.destroy({id: id}).exec(function(err, ad){
+            if (req.param('r')) {
+                res.redirect(req.param('r'));
+                return;
+            }
             res.redirect('/advertisement');
             })
     }
