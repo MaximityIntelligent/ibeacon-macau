@@ -111,53 +111,41 @@ module.exports = {
             if (deviceIds instanceof Array) {
                 
             for(var i = 0; i< deviceIds.length; i++){
+                po = {};
                 po.device = deviceIds[i];
                 po.advertisement = adId;
                 poArr.push(po);
-                console.log("i"+i);
             }
-            
-                
-            
-            
             }else{
                 po.device = deviceIds;
                 po.advertisement = adId;
                 poArr.push(po);
             }
         }
-        console.log(deviceIds);
-        //ad_deployment.destroy().exec(function(){});;
         poArr2 = [];
-        ad_deployment.find({device: deviceIds}).exec(function(err, deploys){
+        ad_deployment.find({device: deviceIds}).populate('device').exec(function(err, deploys){
             
             var found = false;
-            if (deploys.length>0) {
-                
-                //code
+            if (deploys.length>=0) {
                 for (var i = 0; i < poArr.length; i++ ){
                     for(var j =0; j < deploys.length; j++){
-                        
-                       if (poArr[i].device == deploys[j].device ) {
+                       if (poArr[i].device == deploys[j].device.id ) {
                         //code
                         found = true;
                          
                        }
                     }
-                    if (found==false) {
+                    if (!found) {
                         poArr2.push(poArr[i]);
                     }
                     found = false;
                 }
                 
-                
             }else{
                 poArr2 = poArr;
             }
             ad_deployment.create(poArr2).exec(function(err, deploys2){
-                res.write("safsdf");
-                res.end();
-                return;
+                res.redirect('/advertisement/deploy/'+adId);
                 
                 });
             });

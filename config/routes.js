@@ -146,6 +146,10 @@ module.exports.routes = {
   'post /advertisement/deploy/:id': {
     controller: 'AdvertisementController',
     action: 'deployToDevices'
+  },
+  'post /deployment/destroy/:id': {
+    controller: 'DeploymentController',
+    action: 'delete'  
   }
 
   /***************************************************************************

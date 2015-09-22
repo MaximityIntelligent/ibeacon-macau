@@ -106,7 +106,7 @@
                           <%=deployment.device.location%>
                           
                         </td>
-                        <td><form action="deployment/remove?aid=<%=req.param('id')%>&did=<%=deployment.device.id%>"><input type="submit" value="remove"/></form></td>
+                        <td><form action="/deployment/destroy/<%=deployment.id%>?r=/advertisement/deploy/<%=req.param('id')%>" method="post"><input type="submit" value="delete"/></form></td>
                         
                       </tr>
                       
