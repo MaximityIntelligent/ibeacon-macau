@@ -90,7 +90,7 @@ module.exports = {
             res.redirect('/advertisement');
             })
     },
-    deviceToDeploy: function(req, res){
+    deploy: function(req, res){
         var id = req.param('id');
         device.find().exec(function(err, devices){
             ad_deployment.find({advertisement: id}).populate('device').exec(function(err, deploys){
@@ -106,6 +106,7 @@ module.exports = {
         //console.log(deviceIds.length);
         var po = {};
         var poArr = [];
+        //ad_deployment.destroy().exec(function(){});
         if (deviceIds!=null) {
             //code
             if (deviceIds instanceof Array) {
@@ -123,7 +124,7 @@ module.exports = {
             }
         }
         poArr2 = [];
-        ad_deployment.find({device: deviceIds}).populate('device').exec(function(err, deploys){
+        ad_deployment.find({advertisement: adId, device: deviceIds}).populate('device').exec(function(err, deploys){
             
             var found = false;
             if (deploys.length>=0) {
@@ -145,6 +146,13 @@ module.exports = {
                 poArr2 = poArr;
             }
             ad_deployment.create(poArr2).exec(function(err, deploys2){
+                if (err) {
+                    console.log(err);
+                    res.write(err);
+                    res.end();
+                    return;
+                    //code
+                }
                 res.redirect('/advertisement/deploy/'+adId);
                 
                 });

@@ -141,7 +141,7 @@ module.exports.routes = {
   },
   'get /advertisement/deploy/:id': {
     controller: 'AdvertisementController',
-    action: 'deviceToDeploy'
+    action: 'deploy'
   },
   'post /advertisement/deploy/:id': {
     controller: 'AdvertisementController',

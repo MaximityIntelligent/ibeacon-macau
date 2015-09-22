@@ -14,6 +14,10 @@ module.exports = {
     app: {
         model: 'app'
     },
+    deploy_devices: {
+        collection: 'ad_deployment',
+        via: 'advertisement'
+    }
     
   }
 };

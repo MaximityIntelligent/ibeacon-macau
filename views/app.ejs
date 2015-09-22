@@ -99,6 +99,7 @@
                         <th>Name</th>
                         <th></th>
                         <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -112,6 +113,7 @@
                       <tr>
                         <td><a href="/app/read/<%=app.id%>"><%=app.name%></a></td>
                         <td><a href="/app/edit/<%=app.id%>">update</a></td>
+                        <td><a href="app-advertisement/new?app=<%=app.id%>">create advertisement</a></td>
                         <td><form method="post" action="/app/destroy/<%=app.id%>"><input type="submit" value="delete"/></form></td>
                       </tr>
                       <%
