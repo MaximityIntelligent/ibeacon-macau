@@ -93,7 +93,7 @@ module.exports = {
     deviceToDeploy: function(req, res){
         var id = req.param('id');
         device.find().exec(function(err, devices){
-            ad_deployment.find().exec(function(err, deploys){
+            ad_deployment.find({advertisement: id}).populate('device').exec(function(err, deploys){
                 res.view('advertisement-device-deploy', {id: id, devices: devices, deployments: deploys});    
                 });
                 
