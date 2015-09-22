@@ -103,6 +103,8 @@
                         <th>Frequency</th>
                         <th>Valid Date</th>
                         <th>Pick Location</th>
+                        <th>User</th>
+                        <th>App</th>
                         <th></th>
                         <th></th>
                       </tr>
@@ -131,6 +133,15 @@
                         
                         </td>
                         <td><%=ad.pick_location%></td>
+                        <td><%
+                              if (ad.user) {
+                            %>
+                              <%=ad.user.username%>
+                            <%
+                              }
+                        
+                            %></td>
+                        <td><%ad.app.name%></td>
                         <td><a href="/advertisement/edit/<%=ad.id%>">update</a></td>
                         <td><form action="/advertisement/destroy/<%=ad.id%>" method="post"><input type="submit" value="delete"/></form></td>
                       </tr>

@@ -44,7 +44,6 @@ module.exports = {
             });
     },
     update: function(req, res){
-        console.log("dsfdsfds");
         var id = req.param('id');
         var title = req.param('title');
         var image_url = req.param('image_url');
@@ -76,7 +75,9 @@ module.exports = {
             });
     },
     view: function(req, res){
-        advertisement.find({user: req.session.user.id}).exec(function(err, advertisements){
+        //advertisement.destroy().exec(function(){});
+        
+        advertisement.find({user: req.session.user.id}).populate('app').populate('user').exec(function(err, advertisements){
             res.view('advertisement', {advertisements: advertisements});
             });
     },
