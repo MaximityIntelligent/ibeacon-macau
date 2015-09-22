@@ -93,9 +93,76 @@ module.exports = {
     deviceToDeploy: function(req, res){
         var id = req.param('id');
         device.find().exec(function(err, devices){
-            res.view('advertisement-device-deploy', {devices: devices});    
+            ad_deployment.find().exec(function(err, deploys){
+                res.view('advertisement-device-deploy', {id: id, devices: devices, deployments: deploys});    
+                });
+                
             });
         
+    },
+    deployToDevices: function(req, res){
+        var adId = req.param('id');
+        var deviceIds = req.param('deviceId');
+        //console.log(deviceIds.length);
+        var po = {};
+        var poArr = [];
+        if (deviceIds!=null) {
+            //code
+            if (deviceIds instanceof Array) {
+                
+            for(var i = 0; i< deviceIds.length; i++){
+                po.device = deviceIds[i];
+                po.advertisement = adId;
+                poArr.push(po);
+                console.log("i"+i);
+            }
+            
+                
+            
+            
+            }else{
+                po.device = deviceIds;
+                po.advertisement = adId;
+                poArr.push(po);
+            }
+        }
+        console.log(deviceIds);
+        //ad_deployment.destroy().exec(function(){});;
+        poArr2 = [];
+        ad_deployment.find({device: deviceIds}).exec(function(err, deploys){
+            
+            var found = false;
+            if (deploys.length>0) {
+                
+                //code
+                for (var i = 0; i < poArr.length; i++ ){
+                    for(var j =0; j < deploys.length; j++){
+                        
+                       if (poArr[i].device == deploys[j].device ) {
+                        //code
+                        found = true;
+                         
+                       }
+                    }
+                    if (found==false) {
+                        poArr2.push(poArr[i]);
+                    }
+                    found = false;
+                }
+                
+                
+            }else{
+                poArr2 = poArr;
+            }
+            ad_deployment.create(poArr2).exec(function(err, deploys2){
+                res.write("safsdf");
+                res.end();
+                return;
+                
+                });
+            });
+        
+        return;
     }
     
 	

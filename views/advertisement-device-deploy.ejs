@@ -58,8 +58,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            Advertisement Deploy to Devices
-            <small></small>
+            Advertisement Deploy
+            
           </h1>
           <ol class="breadcrumb">
             <li><a href="/">home</a></li>
@@ -73,11 +73,27 @@
           <!-- Small boxes (Stat box) -->
           
           <div class="row">
+            <div class="col-md-6">
+                <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Deployed Device</h3>
+                </div>
+                <div class="box-body">
+                  
+                </div>
+                </div>
+            </div>
+            
+          </div>
+          <div class="row">
                 <!-- left column -->
             <div class="col-md-6">
               <!-- general form elements -->
               <div class="box box-primary">
-                <form role="form" action="/advertisement/deploy" method="post">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Deploy</h3>
+                </div>
+                <form role="form" action="/advertisement/deploy/<%=req.param('id')%>" method="post">
                   <div class="box-body">
                     <div class="form-group">
                       
@@ -89,7 +105,7 @@
                       %>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox">
+                          <input type="checkbox" name="deviceId" value="<%=device.id%>">
                           <%=device.name%>-<%=device.type%>-<%=device.location%>
                         </label>
                       </div>
@@ -112,10 +128,7 @@
             </div>
           </div><!-- /.row -->
           <!-- Main row -->
-          <div class="row">
-            <!-- Left col -->
-            
-          </div><!-- /.row (main row) -->
+          <!-- /.row (main row) -->
 
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
