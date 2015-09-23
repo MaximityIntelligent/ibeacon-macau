@@ -8,8 +8,10 @@
 module.exports = {
 	create: function(req, res){
         var name = req.param('name');
+		var uuid = require('node-uuid');
+		var appSecret = uuid.v1();
         
-        app.create({name: name}).exec(function(err, app2){
+        app.create({name: name, secret: appSecret}).exec(function(err, app2){
             if (err) {
                 //code
                 res.view('500');

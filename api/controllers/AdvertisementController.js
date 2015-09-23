@@ -77,7 +77,7 @@ module.exports = {
     view: function(req, res){
         //advertisement.destroy().exec(function(){});
         
-        advertisement.find({user: req.session.user.id}).populate('app').populate('user').exec(function(err, advertisements){
+        advertisement.find().populate('app').populate('user').exec(function(err, advertisements){
             res.view('advertisement', {advertisements: advertisements});
             });
     },

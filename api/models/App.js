@@ -11,6 +11,7 @@ module.exports = {
     user: {
         model: 'user'
     },
+    secret: 'string',
     has_advertisement: {
         collection: 'advertisement',
         via: 'app'

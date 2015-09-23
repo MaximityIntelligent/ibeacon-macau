@@ -28,7 +28,8 @@
     "passport-local": "1.0.0",
     "passport": "0.2.0",
     "bcrypt-nodejs": "0.0.3",
-    "dateformat": "*"
+    "dateformat": "*",
+    "node-uuid": "*"
   },
   "scripts": {
     "debug": "node debug app.js",
