@@ -141,7 +141,15 @@
                               }
                         
                             %></td>
-                        <td><%=ad.app.name%></td>
+                        <td>
+                          <%
+                          if (ad.app) {
+                          %>
+                          <%=ad.app.name%>
+                          <%
+                          }
+                          %>
+                          </td>
                         <td><a href="/advertisement/edit/<%=ad.id%>">update</a></td>
                         <td><form action="/advertisement/destroy/<%=ad.id%>" method="post"><input type="submit" value="delete"/></form></td>
                       </tr>
