@@ -52,9 +52,9 @@
     <!-- Fav and touch icons -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
@@ -62,11 +62,15 @@
     <div class="container">
 
       <form class="form-signin" action="/login" method="post">
+        
         <h2 class="form-signin-heading">Please sign in</h2>
         <input name="username" type="text" class="input-block-level" placeholder="Username">
         <input name="password" type="password" class="input-block-level" placeholder="Password">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <label class="checkbox">
+          <a href="/register">Register</a>
         </label>
         <button class="btn btn-large btn-primary" type="submit">Sign in</button>
       </form>

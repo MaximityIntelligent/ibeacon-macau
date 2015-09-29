@@ -150,8 +150,10 @@ module.exports.routes = {
   'post /deployment/destroy/:id': {
     controller: 'DeploymentController',
     action: 'delete'  
+  },
+  'get /register': {
+    view: 'register'
   }
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

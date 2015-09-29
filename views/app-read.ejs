@@ -80,15 +80,11 @@
               <div class="box box-primary">
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
-                  <div class="box-body">
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Name</label>
-                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="" value="<%=app.name%>">
-                    </div>
-                  </div><!-- /.box-body -->
-
-                  </form>
+                <p><strong>&nbsp;<%=app.name%></strong></p>
+                <p class="text-center"><strong>App Id:</strong> </p>
+                <p class="text-center"><%=app.id%></p>
+                <p class="text-center"><strong>App Secret:</strong></p>
+                <p class="text-center"><%=app.secret%></p>
               </div><!-- /.box -->
               <div class="btn-group"><a class="btn btn-lg success" href="/app-advertisement/new?app=<%=app.id%>">Create Advertisement</a></div>
 

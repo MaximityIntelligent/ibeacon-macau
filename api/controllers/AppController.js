@@ -64,8 +64,10 @@ module.exports = {
             });
     },
     newAdvertisement: function(req, res){
-        //var appId = req.param('app');
-        res.view('app-advertisement-new');
+        device.find().exec(function(err, devices){
+			res.view('app-advertisement-new', {devices: devices});
+		});
+		
     },
     createAdvertisement: function(req, res){
         var appId = req.param('app');
