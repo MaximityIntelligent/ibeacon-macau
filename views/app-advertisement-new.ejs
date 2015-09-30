@@ -130,7 +130,7 @@
                                     device = devices.pop();
                                 %>
                                 <tr>
-                                  <td><input type="checkbox" name="deviceId" value="<%=device.id%>"></td>
+                                  <td><input type="checkbox" name="device-id" value="<%=device.id%>"></td>
                                   <td><%=device.name%></td>
                                   <td><%=device.type%></td>
                                   <td><%=device.location%></td>
@@ -145,7 +145,6 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" id="deploy-close">Close</button>
-                            <button type="button" class="btn btn-outline" id="deploy-save">Save changes</button>
                           </div>
                         </div><!-- /.modal-content -->
                       </div><!-- /.modal-dialog -->
@@ -161,21 +160,31 @@
                               <thead>
                                 <tr>
                                   <th></th>
-                                  <th>Name</th>
-                                  <th>Type</th>
-                                  <th>Location</th>
-                                  
+                                  <th>location</th>                              
                                 </tr>
                               </thead>
                               
                               <tbody>
+                                <%
+                                  var location;
+                                  while (locations.length) {
+                                    //code
+                                    location = locations.pop();
+                                %>
+                                <tr>
+                                  <td><input type="checkbox" name="device-location" value="<%=location%>"></td>
+                                  <td><%=location%></td>
+                                </tr>
+                                
+                                <%
+                                  }
+                                %>
                                
                               </tbody>
                             </table>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" id="deploy-group-close">Close</button>
-                            <button type="button" class="btn btn-outline" id="deploy-group-save">Save changes</button>
                           </div>
                         </div><!-- /.modal-content -->
                       </div><!-- /.modal-dialog -->
@@ -249,20 +258,12 @@
         $("#deploy-close").button().on("click", function(){
               dialog.dialog("close");
         })
-        $("#deploy-save").button().on("click", function(){
-              dialog.dialog("close");
-          })
-        
         $("#deploy-group").button().on( "click", function() {
               dialog2.dialog("open");
         });
         $("#deploy-group-close").button().on("click", function(){
               dialog2.dialog("close");
         })
-        $("#deploy-group-save").button().on("click", function(){
-              
-              dialog2.dialog("close");
-          })
       });
     </script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>

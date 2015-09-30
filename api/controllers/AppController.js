@@ -65,7 +65,12 @@ module.exports = {
     },
     newAdvertisement: function(req, res){
         device.find().exec(function(err, devices){
-			res.view('app-advertisement-new', {devices: devices});
+		device.native(function(err,device2){
+			device2.distinct("location", function(err,locations){
+			   res.view('app-advertisement-new', {devices: devices, locations: locations});
+			});
+		  });
+			
 		});
 		
     },
