@@ -7,13 +7,13 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../css/AdminLTE.css">
     <link rel="stylesheet" href="../../css/skins/_all-skins.min.css">
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -68,7 +68,7 @@
             <div class="col-md-6">
               <!-- general form elements -->
               <div class="box box-primary">
-                <form role="form" action="/app-advertisement?app=<%=req.param('app')%>" method="post">
+                <form role="form" name="ad_form" id="ad_form" action="/app-advertisement?app=<%=req.param('app')%>" method="post" onSubmit="javascript: return appendToForm(); ">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Title</label>
@@ -130,7 +130,7 @@
                                     device = devices.pop();
                                 %>
                                 <tr>
-                                  <td><input type="checkbox" name="device-id" value="<%=device.id%>"></td>
+                                  <td><input type="checkbox" name="device" value="<%=device.id%>"></td>
                                   <td><%=device.name%></td>
                                   <td><%=device.type%></td>
                                   <td><%=device.location%></td>
@@ -172,7 +172,7 @@
                                     location = locations.pop();
                                 %>
                                 <tr>
-                                  <td><input type="checkbox" name="device-location" value="<%=location%>"></td>
+                                  <td><input type="checkbox" name="device_location" value="<%=location%>"></td>
                                   <td><%=location%></td>
                                 </tr>
                                 
@@ -209,7 +209,7 @@
         <div class="pull-right hidden-xs">
           <b>Version</b> 2.3.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2014-2015 <a href="http://www.maximity.com">Maximity Tech</a>.</strong> All rights reserved.
       </footer>
 
       <!-- Control Sidebar -->
@@ -227,7 +227,7 @@
     <script>
       $.widget.bridge('uibutton', $.ui.button);
     </script>
-      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../plugins/input-mask/jquery.inputmask.js"></script>
     <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
     <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
@@ -238,9 +238,17 @@
     
      
 -->    <script>
+    function appendToForm() {
+      $("#deploy-modal").appendTo("#ad_form");
+      $("#deploy-group-modal").appendTo("#ad_from");
+      alert(document.ad_form.device);
+      return true;
+      
+    }
     $(function () {
         $("[data-mask]").inputmask();
         $("#menu").load("/user-menu");
+        
         var dialog;
         dialog = $("#deploy-modal").dialog({autoOpen: false,
         height: 500,
@@ -253,7 +261,6 @@
         modal: true});
         $("#deploy").button().on( "click", function() {
               dialog.dialog("open");
-              //dialog2.dialog("close");
         });
         $("#deploy-close").button().on("click", function(){
               dialog.dialog("close");

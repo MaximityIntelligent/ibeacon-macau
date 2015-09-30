@@ -4,6 +4,72 @@
  * @description :: Server-side logic for managing devices
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+var print = require('node-print');
+function deployToDevices(adId, deviceIds, res, next){
+		console.log(adId);
+        var po = {};
+        var poArr = [];
+        //ad_deployment.destroy().exec(function(){});
+        if (deviceIds!=null) {
+            //code
+            if (deviceIds instanceof Array) {
+                
+            for(var i = 0; i< deviceIds.length; i++){
+                po = {};
+                po.device = deviceIds[i];
+                po.advertisement = adId;
+                poArr.push(po);
+            }
+            }else{
+                console.log("25");
+                po.device = deviceIds;
+                po.advertisement = adId;
+                poArr.push(po);
+            }
+        }
+		poArr2 = [];
+        ad_deployment.find({advertisement: adId, device: deviceIds}).populate('device').exec(function(err, deploys){
+            console.log("32");
+            var found = false;
+            if (deploys.length>=0) {
+                for (var i = 0; i < poArr.length; i++ ){
+                    for(var j =0; j < deploys.length; j++){
+                       if (poArr[i].device == deploys[j].device.id ) {
+                        //code
+                        found = true;
+                        console.log("40");
+                         
+                       }
+                    }
+                    if (!found) {
+                        poArr2.push(poArr[i]);
+                    }
+                    found = false;
+                }
+                
+            }else{
+                poArr2 = poArr;
+            }
+			//print.pt("poArr2"+poArr2);
+            ad_deployment.create(poArr2).exec(function(err, deploys2){
+				console.log("56");
+                if (err) {
+                    console.log(err);
+                    res.write(err);
+                    res.end();
+                    return;
+                    //code
+                }
+				console.log("59");
+                next();
+				
+                });
+            });
+        
+        
+    
+    
+}
 
 module.exports = {
 	create: function(req, res){
@@ -67,7 +133,7 @@ module.exports = {
         device.find().exec(function(err, devices){
 		device.native(function(err,device2){
 			device2.distinct("location", function(err,locations){
-			   res.view('app-advertisement-new', {devices: devices, locations: locations});
+					res.view('app-advertisement-new', {devices: devices, locations: locations});
 			});
 		  });
 			
@@ -83,6 +149,11 @@ module.exports = {
         var valid_date = req.param('valid_date');
         var pick_location = req.param('pick_location');
         var validDate;
+		var deviceIds = req.param('device');
+		var device_group = req.param('device_group');
+		console.log("print");
+		console.log("device"+deviceIds);
+
         if (valid_date!=null) {
             var validDateArr = valid_date.split("/");
             if (validDateArr.length==3) {
@@ -96,8 +167,10 @@ module.exports = {
                 res.view('500');
                 return;
             }
-            res.redirect('/app/read/'+appId);
-            return;
+			deployToDevices(ad.id, deviceIds, res, function(){
+				res.redirect('/app/read/'+appId);
+				return;
+				});
             });
     },
 	editAdvertisement: function(req, res){
