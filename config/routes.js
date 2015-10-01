@@ -153,7 +153,35 @@ module.exports.routes = {
   },
   'get /register': {
     view: 'register'
-  }
+  },
+  'get /location': {
+    controller: 'LocationController',
+    action: 'view'
+  },
+  'get /location/read/:id': {
+    controller: 'LocationController',
+    action: 'read'
+  },
+  'get /location/edit/:id': {
+    controller: 'LocationController',
+    action: 'edit'
+  },
+  'post /location': {
+    controller: 'LocationController',
+    action: 'create'
+  },
+  'post /location/:id': {
+    controller: 'LocationController',
+    action: 'update'
+  },
+  'post /location/destroy/:id': {
+    controller: 'LocationController',
+    action: 'delete'
+  },
+  'get /location/new': {
+    view: 'location-new'
+  },
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
