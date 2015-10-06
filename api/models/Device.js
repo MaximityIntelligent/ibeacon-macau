@@ -8,7 +8,9 @@
 module.exports = {
   identity: 'device',
   attributes: {
-
+  location: {
+        model: 'location'
+    }
   }
 };
 

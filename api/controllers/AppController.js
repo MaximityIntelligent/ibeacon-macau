@@ -131,11 +131,14 @@ module.exports = {
     },
     newAdvertisement: function(req, res){
         device.find().exec(function(err, devices){
-		device.native(function(err,device2){
-			device2.distinct("location", function(err,locations){
-					res.view('app-advertisement-new', {devices: devices, locations: locations});
-			});
-		  });
+		//device.native(function(err,device2){
+		//	device2.distinct("location", function(err,locations){
+		//			res.view('app-advertisement-new', {devices: devices, locations: locations});
+		//	});
+		//  });
+                location.find().exec(function(err, locations){
+                        res.view('app-advertisement-new', {devices: devices, locations: locations })
+                        });
 			
 		});
 		

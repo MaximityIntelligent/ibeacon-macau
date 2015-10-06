@@ -68,7 +68,8 @@ module.exports.routes = {
     action: 'delete'
   },
   'get /device/new': {
-    view: 'device-new'
+    controller: 'DeviceController',
+    action: 'new'
   },
   'get /advertisement': {
     controller: 'AdvertisementController',

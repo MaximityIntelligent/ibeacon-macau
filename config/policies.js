@@ -48,6 +48,7 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
+    /*
     DeviceController: {
         'find': 'isLoggedIn',
         'read': 'isLoggedIn',
@@ -75,6 +76,7 @@ module.exports.policies = {
         'createAdvertisement': 'isLoggedIn'
         
     }
+    */
     
     
     

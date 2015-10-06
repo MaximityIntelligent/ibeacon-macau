@@ -34,12 +34,14 @@ module.exports = {
     edit: function(req, res){
         var id = req.param('id');
         device.findOne({id: id}).exec(function(err, dev){
-            res.view('device-edit', {device: dev});
+			location.find().exec(function(err, locations){
+				res.view('device-edit', {device: dev, locations: locations});			
+				});
             })  
     },
     read: function(req, res){
         var id = req.param('id');
-        device.findOne({id: id}).exec(function(err, dev){
+        device.findOne({id: id}).populate('location').exec(function(err, dev){
             res.view('device-read', {device: dev});
             })  
     },
@@ -47,7 +49,6 @@ module.exports = {
         var id = req.param('id');
         var name = req.param('name');
         var type = req.param('type');
-        var location = req.param('location');
         var point = req.param('point');
         var state = req.param('state');
         var city = req.param('city');
@@ -56,6 +57,10 @@ module.exports = {
         var circle = req.param('circle');
         var status = req.param('status');
         var enable = req.param('enable');
+		var location = req.param('location');
+		var uuid_major = req.param('uuid_major');
+        var uuid_minor = req.param('uuid_minor');
+		
         
         device.update({id: id},{name: name, type: type, uuid_major: uuid_major, uuid_minor: uuid_minor, location: location, point: point, state: state, city: city, area: area, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
             if (err) {
@@ -82,7 +87,12 @@ module.exports = {
         device.destroy({id: id}).exec(function(err, dev){
             res.redirect('/device');
             });
-    }
+    },
+	new: function(req, res){
+		location.find().exec(function(err, locations){
+			res.view('device-new', {locations: locations})
+			});
+	}
     
 };
 

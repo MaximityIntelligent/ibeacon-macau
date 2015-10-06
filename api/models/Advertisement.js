@@ -17,7 +17,8 @@ module.exports = {
     deploy_devices: {
         collection: 'ad_deployment',
         via: 'advertisement'
-    }
+    },
+    
     
   }
 };
