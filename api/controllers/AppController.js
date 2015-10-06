@@ -170,11 +170,43 @@ module.exports = {
                 res.view('500');
                 return;
             }
-			deployToDevices(ad.id, deviceIds, res, function(){
-				res.redirect('/app/read/'+appId);
-				return;
-				});
+            
+        var deviceArr = [];
+        if (deviceIds!=null) {
+            //code
+                if (deviceIds instanceof Array) {
+                        deviceArr = deviceIds;
+                
+                }else{
+                        deviceArr.push(deviceIds);
+                }
+                
+        };
+            
+        device.find({id: device_group}).exec(function(err, devices){
+            var duplicate = false;
+                for(var i = 0; i<devices.length; i++){
+                        duplicate = false;
+                        for (var j = 0; j < deviceArr.length; j++){
+                                if(devices[i].id == deviceArr[j])
+                                        duplicate = true
+                        
+                        }
+                        if (!duplicate) {
+                                //code
+                                deviceArr.push(devices[i].id);
+                        }
+                }
+                deployToDevices(ad.id, deviceArr, res, function(){
+                        res.redirect('/app/read/'+appId);
+                        return;
+                        });
             });
+                
+                
+        });
+            
+			
     },
 	editAdvertisement: function(req, res){
 		var adId = req.param('id');
