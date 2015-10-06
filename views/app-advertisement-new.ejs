@@ -106,6 +106,7 @@
                     <button id="deploy" type="button" value="fdsfs" >Deploy to Device</button>
                     <button id="deploy-group" type="button" value="fdsfs" >Deploy to Device Group</button>
                     <!--</div>-->
+                    
                     <div id="deploy-modal" class="modal modal-primary ">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -149,7 +150,6 @@
                         </div><!-- /.modal-content -->
                       </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->   
-                    
                     
                     <div id="deploy-group-modal" class="modal modal-primary ">
                       <div class="modal-dialog">
@@ -237,18 +237,17 @@
     <!--<script src="../jquery-ui-1.11.4/jquery-ui.js"></script>-->
     
      
--->    <script>
+  <script>
     function appendToForm() {
       $("#deploy-modal").appendTo("#ad_form");
-      $("#deploy-group-modal").appendTo("#ad_from");
-      alert(document.ad_form.device);
+      $("#deploy-group-modal").appendTo("#ad_form");
+
       return true;
       
     }
     $(function () {
         $("[data-mask]").inputmask();
         $("#menu").load("/user-menu");
-        
         var dialog;
         dialog = $("#deploy-modal").dialog({autoOpen: false,
         height: 500,

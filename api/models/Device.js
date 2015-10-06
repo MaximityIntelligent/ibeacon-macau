@@ -10,7 +10,10 @@ module.exports = {
   attributes: {
   location: {
         model: 'location'
-    }
+    },
+    uuid: 'string',
+    major: 'string',
+    minor: 'string'
   }
 };
 

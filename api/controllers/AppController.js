@@ -156,11 +156,12 @@ module.exports = {
 		var device_group = req.param('device_group');
 		console.log("print");
 		console.log("device"+deviceIds);
+        console.log("devicergroup"+device_group);
 
         if (valid_date!=null) {
             var validDateArr = valid_date.split("/");
             if (validDateArr.length==3) {
-                //code  
+                //code
                 validDate = new Date(validDateArr[2], validDateArr[1]-1, validDateArr[0]);
             }
         }
@@ -183,17 +184,20 @@ module.exports = {
                 
         };
             
-        device.find({id: device_group}).exec(function(err, devices){
+        device.find({location: device_group}).exec(function(err, devices){
+                console.log("dl"+devices.length)
             var duplicate = false;
                 for(var i = 0; i<devices.length; i++){
                         duplicate = false;
                         for (var j = 0; j < deviceArr.length; j++){
                                 if(devices[i].id == deviceArr[j])
                                         duplicate = true
+                                        console.log(i+" " +j+"");
                         
                         }
                         if (!duplicate) {
                                 //code
+                                console.log("fdfd199");
                                 deviceArr.push(devices[i].id);
                         }
                 }
