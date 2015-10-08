@@ -48,14 +48,15 @@ module.exports.policies = {
 		// before letting any users feed our rabbits
 		// feed : ['isNiceToAnimals', 'hasRabbitFood']
 	// }
-    /*
+    
     DeviceController: {
         'find': 'isLoggedIn',
         'read': 'isLoggedIn',
         'create': 'isLoggedIn',
         'view': 'isLoggedIn',
         'edit': 'isLoggedIn',
-        'delete': 'isLoggedIn'
+        'delete': 'isLoggedIn',
+        'update': 'isLoggedIn'
     },
     AdvertisementController: {
         'find': 'isLoggedIn',
@@ -63,7 +64,8 @@ module.exports.policies = {
         'create': 'isLoggedIn',
         'view': 'isLoggedIn',
         'edit': 'isLoggedIn',
-        'delete': 'isLoggedIn'
+        'delete': 'isLoggedIn',
+        'update': 'isLoggedIn'
     },
     AppController: {
         'find': 'isLoggedIn',
@@ -72,11 +74,32 @@ module.exports.policies = {
         'view': 'isLoggedIn',
         'edit': 'isLoggedIn',
         'delete': 'isLoggedIn',
+        'update': 'isLoggedIn',
         'home': 'isLoggedIn',
         'createAdvertisement': 'isLoggedIn'
         
+    },
+    LocationController: {
+        'find': 'isLoggedIn',
+        'read': 'isLoggedIn',
+        'create': 'isLoggedIn',
+        'view': 'isLoggedIn',
+        'edit': 'isLoggedIn',
+        'delete': 'isLoggedIn',
+        'update': 'isLoggedIn',
+        
+    },
+    UserController: {
+        'find': 'isLoggedIn',
+        'read': 'isLoggedIn',
+        'create': 'isLoggedIn',
+        'view': 'isLoggedIn',
+        'edit': 'isLoggedIn',
+        'delete': 'isLoggedIn',
+        'update': 'isLoggedIn',
+        
     }
-    */
+    
     
     
     
