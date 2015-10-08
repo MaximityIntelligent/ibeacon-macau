@@ -182,6 +182,35 @@ module.exports.routes = {
   'get /location/new': {
     view: 'location-new'
   },
+  
+  'get /user': {
+    controller: 'UserController',
+    action: 'view'
+  },
+  'get /user/read/:id': {
+    controller: 'UserController',
+    action: 'read'
+  },
+  'get /user/edit/:id': {
+    controller: 'UserController',
+    action: 'edit'
+  },
+  'post /user': {
+    controller: 'UserController',
+    action: 'create'
+  },
+  'post /user/:id': {
+    controller: 'UserController',
+    action: 'update'
+  },
+  'post /user/destroy/:id': {
+    controller:  'UserController',
+    action: 'delete'
+  },
+  'get /user/new': {
+    view: 'user-new'
+  },
+
 
   /***************************************************************************
   *                                                                          *
