@@ -210,13 +210,17 @@ module.exports.routes = {
   'get /user/new': {
     view: 'user-new'
   },
-  'get /geo/provinces': {
+  'get /geo/state': {
     controller: 'GeoController',
-    action: 'getProvinces'
+    action: 'getStates'
   },
-  'get /geo/district/:province': {
+  'get /geo/city/:state': {
     controller: 'GeoController',
-    action: 'getDistricts'
+    action: 'getCities'
+  },
+  'get /geo/region/:city': {
+    controller: 'GeoController',
+    action: 'getRegions'
   }
 
 

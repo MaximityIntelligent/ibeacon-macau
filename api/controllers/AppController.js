@@ -4,7 +4,6 @@
  * @description :: Server-side logic for managing devices
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-var print = require('node-print');
 function deployToDevices(adId, deviceIds, res, next){
 		console.log(adId);
         var po = {};
@@ -21,7 +20,6 @@ function deployToDevices(adId, deviceIds, res, next){
                 poArr.push(po);
             }
             }else{
-                console.log("25");
                 po.device = deviceIds;
                 po.advertisement = adId;
                 poArr.push(po);

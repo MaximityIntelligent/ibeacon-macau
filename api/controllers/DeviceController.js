@@ -11,18 +11,18 @@ module.exports = {
         var type = req.param('type');
         var major = req.param('major');
         var minor = req.param('minor');
-		var uuid = req.param('uuid');
+        var uuid = req.param('uuid');
         var location = req.param('location');
         var point = req.param('point');
         var state = req.param('state');
         var city = req.param('city');
-        var area = req.param('area');
+        var area = req.param('region');
         var street = req.param('street');
         var circle = req.param('circle');
         var status = req.param('status');
         var enable = req.param('enable');
         
-        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, area: area, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
+        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
             if (err) {
                 //code
                 res.view('500');
@@ -53,18 +53,18 @@ module.exports = {
         var point = req.param('point');
         var state = req.param('state');
         var city = req.param('city');
-        var area = req.param('area');
+        var region = req.param('region');
         var street = req.param('street');
         var circle = req.param('circle');
         var status = req.param('status');
         var enable = req.param('enable');
-		var location = req.param('location');
+        var location = req.param('location');
 		var major = req.param('major');
         var minor = req.param('minor');
 		var uuid = req.param('uuid');
 		
         
-        device.update({id: id},{name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, area: area, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
+        device.update({id: id},{name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
             if (err) {
                 //code
                 res.view('500');

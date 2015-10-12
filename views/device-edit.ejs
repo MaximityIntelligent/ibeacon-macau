@@ -107,17 +107,27 @@
                       <input type="text" name="point" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.point%>">
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">State</label>
-                      <input type="text" name="state" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.state%>">
+                      <label>State</label>
+                      <select id="state" class="form-control" name="state">
+                        <option value="<%=device.state%>" selected><%=device.state%></option>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">City</label>
-                      <input type="text" name="city" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.city%>">
+                      <label>City</label>
+                      <select id="city" class="form-control" name="city">
+                        <option value="<%=device.city%>" selected><%=device.city%></option>
+                      </select>
                     </div>
                     <div class="form-group">
-                      <label for="exampleInputPassword1">Area</label>
-                      <input type="text" name="area" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.area%>">
+                      <label>Region</label>
+                      <select id="region" class="form-control" name="region">
+                        <option value="<%=device.region%>"><%=device.region%></option>
+                      </select>
                     </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Location</label>
+                      <input type="text" name="location" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.location%>">
+                    </div>                    
                     <div class="form-group">
                       <label for="exampleInputPassword1">Street</label>
                       <input type="text" name="street" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.street%>">
@@ -126,30 +136,7 @@
                       <label for="exampleInputPassword1">Circle</label>
                       <input type="text" name="circle" class="form-control" id="exampleInputPassword1" placeholder="" value="<%=device.circle%>">
                     </div>
-                    <div class="form-group">
-                      <label>Location</label>
-                      <select class="form-control" name="location">
-                        <%
-                        var location;
-                        while (locations.length) {
-                          location = locations.pop();
-                          if (device.location==location.id) {
-                        %>
-                        <option value="<%=location.id%>" selected><%=location.name%></option>
-                        <%
-                            //code
-                          }
-                          else{
-                        %>
-                        <option value="<%=location.id%>"><%=location.name%></option>
-                        <%
-                          }
-                        }
-                        %>
-                        
-                        
-                      </select>
-                    </div>
+                    
                   </div><!-- /.box-body -->
 
                   <div class="box-footer">
@@ -188,6 +175,114 @@
       $.widget.bridge('uibutton', $.ui.button);
       $(function(){
         $('#menu').load('/user-menu');
+        $.ajax({
+          url: "/geo/state",
+          beforeSend: function( xhr ) {
+            //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+          }
+        })
+        .done(function( data ) {
+          var option; html = "";
+          while (data.length) {
+            //code
+            var state = data.pop();
+            if (state!="<%=device.state%>") {
+              option = "<option value='"+state+"'>"+state+"</option>";
+            }
+            html = html + option;
+          }
+          $("#state").append(html);
+        });
+        var selectedState = $("#state option:selected").text();
+        
+        $.ajax({
+        url: "/geo/city/"+selectedState,
+        beforeSend: function( xhr ) {
+          //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+        }
+        }).done(function(data){
+          var html = "";
+          while (data.length) {
+            var city = data.pop();
+            if (city!="<%=device.city%>") {
+            option = "<option value='"+city+"'>"+city+"</option>";
+            }
+            html = html + option;
+          }
+          $("#city").append(html);
+        });
+        
+        selectedCity = $("#city option:selected").text();
+        $.ajax({
+        url: "/geo/region/"+selectedCity,
+        beforeSend: function( xhr ) {
+          //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+        }
+        }).done(function(data){
+          var html = "";
+          while (data.length) {
+            var region = data.pop();
+            if(region!="<%=device.region%>"){
+            option = "<option value='"+region+"'>"+region+"</option>";
+            }
+            html = html + option;
+          }
+          $("#region").append(html);
+        });        
+          
+        
+        
+      
+       
+      
+      $("#state").change(function(){
+        var selectedState = $("#state option:selected").text();
+        $("#city").empty();
+        $.ajax({
+        url: "/geo/city/"+selectedState,
+        beforeSend: function( xhr ) {
+          //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+        }
+        }).done(function(data){
+          //alert(data);
+          $("#city").empty();
+          html = "";
+          while (data.length) {
+            var city = data.pop();
+            option = "<option value='"+city+"'>"+city+"</option>";
+            html = html + option;
+            //code
+          }
+          $("#city").append(html);
+          });
+        
+
+      });
+      $("#city").change(function(){
+        var selectedCity = $("#city option:selected").text();
+        $("#region").empty();
+        $.ajax({
+        url: "/geo/region/"+selectedCity,
+        beforeSend: function( xhr ) {
+          //xhr.overrideMimeType( "text/plain; charset=x-user-defined" );
+        }
+        }).done(function(data){
+          //alert(data);
+          $("#region").empty();
+          html = "";
+          while (data.length) {
+            var region = data.pop();
+            option = "<option value='"+region+"'>"+region+"</option>";
+            html = html + option;
+            //code
+          }
+          $("#region").append(html);
+          });
+        
+
+      });
+      
+
         });
     </script>
 
