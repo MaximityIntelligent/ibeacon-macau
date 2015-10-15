@@ -221,6 +221,10 @@ module.exports.routes = {
   'get /geo/region/:city': {
     controller: 'GeoController',
     action: 'getRegions'
+  },
+  'get /api/device': {
+    controller: 'ApiController',
+    action: 'getDevices'
   }
 
 

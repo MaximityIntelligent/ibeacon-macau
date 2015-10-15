@@ -10,6 +10,7 @@ var city = [], region = [];
 city['广东'] = ['广州','深圳','珠海','江门','韶关'];
 region['珠海'] = ['香洲', '金湾', '斗门'];
 
+
 module.exports = {
     
     getStates: function(req, res, err){

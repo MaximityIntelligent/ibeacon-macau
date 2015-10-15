@@ -6,14 +6,19 @@
 */
 
 module.exports = {
-  identity: 'device',
+  identity: 'devices',
   attributes: {
-  location: {
-        model: 'location'
-    },
     uuid: 'string',
     major: 'string',
-    minor: 'string'
+    minor: 'string',
+    type: 'string',
+    name: 'string',
+    state: 'string',
+    city: 'string',
+    region: 'string',
+    location: 'string'
+    
   }
 };
 
+    

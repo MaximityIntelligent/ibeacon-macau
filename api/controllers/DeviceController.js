@@ -42,7 +42,7 @@ module.exports = {
     },
     read: function(req, res){
         var id = req.param('id');
-        device.findOne({id: id}).populate('location').exec(function(err, dev){
+        device.findOne({id: id}).exec(function(err, dev){
             res.view('device-read', {device: dev});
             })  
     },
@@ -91,9 +91,8 @@ module.exports = {
             });
     },
 	new: function(req, res){
-		location.find().exec(function(err, locations){
-			res.view('device-new', {locations: locations})
-			});
+    res.view('device-new')
+		
 	}
     
 };
