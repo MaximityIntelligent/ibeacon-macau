@@ -21,8 +21,8 @@ module.exports = {
         var circle = req.param('circle');
         var status = req.param('status');
         var enable = req.param('enable');
-        
-        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
+		var cangbaojie_name = req.param('cangbaojie_name');
+        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, area: area, street: street, circle: circle, status: status, enable: enable, cangbaojie_name: cangbaojie_name}).exec(function(err, device2){
             if (err) {
                 //code
                 res.view('500');
@@ -54,6 +54,7 @@ module.exports = {
         var state = req.param('state');
         var city = req.param('city');
         var region = req.param('region');
+		var area = req.param('area');
         var street = req.param('street');
         var circle = req.param('circle');
         var status = req.param('status');
@@ -62,9 +63,9 @@ module.exports = {
 		var major = req.param('major');
         var minor = req.param('minor');
 		var uuid = req.param('uuid');
-		
+		var cangbaojie_name = req.param('cangbaojie_name');		
         
-        device.update({id: id},{name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, street: street, circle: circle, status: status, enable: enable}).exec(function(err, device2){
+        device.update({id: id},{name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, area: area, street: street, circle: circle, status: status, enable: enable, cangbaojie_name: cangbaojie_name}).exec(function(err, device2){
             if (err) {
                 //code
                 res.view('500');
@@ -83,6 +84,7 @@ module.exports = {
             res.view('device', {devices: devices});
             return;
             });
+		
     },
     delete: function(req, res){
         var id = req.param('id');

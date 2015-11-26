@@ -6,7 +6,7 @@
 */
 
 module.exports = {
-  identity: 'devices',
+  identity: 'device',
   attributes: {
     uuid: 'string',
     major: 'string',
@@ -16,8 +16,8 @@ module.exports = {
     state: 'string',
     city: 'string',
     region: 'string',
-    location: 'string'
-    
+    location: 'string',
+    cangbaojie_name: 'string'
   }
 };
 
