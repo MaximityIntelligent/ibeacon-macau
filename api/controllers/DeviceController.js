@@ -13,16 +13,18 @@ module.exports = {
         var minor = req.param('minor');
         var uuid = req.param('uuid');
         var location = req.param('location');
+        var location_type = req.param('location_type');
         var point = req.param('point');
         var state = req.param('state');
         var city = req.param('city');
-        var area = req.param('region');
+        var region = req.param('region');
+        var area = req.param('area');
         var street = req.param('street');
         var circle = req.param('circle');
-        var status = req.param('status');
-        var enable = req.param('enable');
+
 		var cangbaojie_name = req.param('cangbaojie_name');
-        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, area: area, street: street, circle: circle, status: status, enable: enable, cangbaojie_name: cangbaojie_name}).exec(function(err, device2){
+        console.log(name+" "+type+ " "+major+" "+minor+" "+uuid+" "+location+" "+point+ " "+state+" "+city+" "+area+" "+street+" "+circle+ " " + " "+cangbaojie_name);
+        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, area: area, street: street, circle: circle, enable: true, location_type: location_type, cangbaojie_name: cangbaojie_name}).exec(function(err, device2){
             if (err) {
                 //code
                 res.view('500');
