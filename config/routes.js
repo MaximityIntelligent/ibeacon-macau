@@ -210,18 +210,6 @@ module.exports.routes = {
   'get /user/new': {
     view: 'user-new'
   },
-  'get /geo/state': {
-    controller: 'GeoController',
-    action: 'getStates'
-  },
-  'get /geo/city/:state': {
-    controller: 'GeoController',
-    action: 'getCities'
-  },
-  'get /geo/region/:city': {
-    controller: 'GeoController',
-    action: 'getRegions'
-  },
   'get /api/device': {
     controller: 'ApiController',
     action: 'getDevices'

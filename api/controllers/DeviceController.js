@@ -95,6 +95,7 @@ module.exports = {
             });
     },
 	new: function(req, res){
+        console.log("new");
     res.view('device-new')
 		
 	}
