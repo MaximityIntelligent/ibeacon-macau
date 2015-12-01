@@ -61,15 +61,14 @@ module.exports = {
         var circle = req.param('circle');
         var status = req.param('status');
         var enable = req.param('enable');
-        var location = req.param('location');
+        var location_type = req.param('location_type');
 		var major = req.param('major');
         var minor = req.param('minor');
 		var uuid = req.param('uuid');
 		var cangbaojie_name = req.param('cangbaojie_name');		
         
-        device.update({id: id},{name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, area: area, street: street, circle: circle, status: status, enable: enable, cangbaojie_name: cangbaojie_name}).exec(function(err, device2){
+        device.update({id: id},{name: name, type: type, major: major, minor: minor, uuid: uuid, location: location, point: point, state: state, city: city, region: region, area: area, street: street, circle: circle, status: status, enable: enable, cangbaojie_name: cangbaojie_name, location_type: location_type}).exec(function(err, device2){
             if (err) {
-                //code
                 res.view('500');
                 return;
             }
@@ -95,7 +94,7 @@ module.exports = {
             });
     },
 	new: function(req, res){
-        console.log("new");
+        
     res.view('device-new')
 		
 	}
