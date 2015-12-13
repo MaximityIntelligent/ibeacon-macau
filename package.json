@@ -29,7 +29,8 @@
     "passport": "0.2.0",
     "bcrypt-nodejs": "0.0.3",
     "dateformat": "*",
-    "node-uuid": "*"
+    "node-uuid": "*",
+    "underscore": "*"
   },
   "scripts": {
     "debug": "node debug app.js",

@@ -8,15 +8,16 @@
 module.exports = {
   identity: 'device',
   attributes: {
-    uuid: 'string',
-    major: 'string',
-    minor: 'string',
-    type: 'string',
-    name: 'string',
-    state: 'string',
-    city: 'string',
-    region: 'string',
-    location: 'string',
+    uuid: {type: 'string', required: true},
+    major: {type: 'string', required: true},
+    minor: {type: 'string', required: true},
+    name: {type: 'string', required: true},
+    state: {type: 'string', required: true},
+    city: {type: 'string', required: true},
+    region: {type: 'string', required: true},
+    street: {type: 'string', required: true},
+    location_type: {type: 'string', required: true},
+    location: {type: 'string', required: true},
     cangbaojie_name: 'string'
   }
 };
