@@ -7,22 +7,24 @@
 
 module.exports = {
 	create: function(req, res){
-        var name = req.param('name');
-        var type = req.param('type');
+        console.log("sadfdsfds");
+        var identifier = req.param('identifier');
         var major = req.param('major');
         var minor = req.param('minor');
         var uuid = req.param('uuid');
-        var location_type = req.param('location_type');
+        var locationType = req.param('locationType');
         var state = req.param('state');
         var city = req.param('city');
         var region = req.param('region');
         var street = req.param('street');
         var location = req.param('location');
-		var cangbaojie_name = req.param('cangbaojie_name');
+		var cangbaojieName = req.param('cangbaojieName');
         
-        device.create({name: name, type: type, major: major, minor: minor, uuid: uuid, state: state, city: city, region: region, street: street, location: location,  location_type: location_type, cangbaojie_name: cangbaojie_name}).exec(function(err, device2){
+        device.create({identifier: identifier, major: major, minor: minor, uuid: uuid, state: state, city: city, region: region, street: street, location: location,  locationType: locationType, cangbaojieName: cangbaojieName}).exec(function(err, device2){
             if (err) {
                 //code
+                
+                console.log(err);
                 res.view('500');
                 return;
             }
@@ -30,44 +32,36 @@ module.exports = {
             });
         
     },
-    edit: function(req, res){
+    findOne: function(req, res){
         var id = req.param('id');
         device.findOne({id: id}).exec(function(err, dev){
-			location.find().exec(function(err, locations){
-				res.view('device-edit', {device: dev, locations: locations});			
-				});
-            })  
-    },
-    read: function(req, res){
-        var id = req.param('id');
-        device.findOne({id: id}).exec(function(err, dev){
-            res.view('device-read', {device: dev});
-            })  
+            res.view('device-one', {device: dev});
+        })  
     },
     update: function(req, res){
         var id = req.param('id');
-        var name = req.param('name');
+        var identifier = req.param('identifier');
         var state = req.param('state');
         var city = req.param('city');
         var region = req.param('region');
 		var street = req.param('street');
         var location = req.param('location');
-        var location_type = req.param('location_type');
+        var locationType = req.param('locationType');
 		var major = req.param('major');
         var minor = req.param('minor');
 		var uuid = req.param('uuid');
-		var cangbaojie_name = req.param('cangbaojie_name');		
+		var cangbaojieName = req.param('cangbaojieName');		
         
-        device.update({id: id},{name: name, major: major, minor: minor, uuid: uuid, location: location, state: state, city: city, region: region, street: street, cangbaojie_name: cangbaojie_name, location_type: location_type, location: location}).exec(function(err, device2){
+        device.update({id: id},{identifier: identifier, major: major, minor: minor, uuid: uuid, location: location, state: state, city: city, region: region, street: street, cangbaojieName: cangbaojieName, locationType: locationType, location: location}).exec(function(err, device2){
             if (err) {
                 res.view('500');
                 return;
             }
-            res.redirect('/device');
+            res.redirect('/device/'+id);
             });
     },
-    view: function(req, res){
-        
+    find: function(req, res){
+        console.log('devices');
         device.find().exec(function(err, devices){
             if (err) {
                 res.view('500');
@@ -76,7 +70,6 @@ module.exports = {
             res.view('device', {devices: devices});
             return;
             });
-		
     },
     delete: function(req, res){
         var id = req.param('id');
@@ -85,9 +78,7 @@ module.exports = {
             });
     },
 	new: function(req, res){
-        
     res.view('device-new')
-		
 	}
     
 };

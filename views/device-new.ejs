@@ -54,19 +54,19 @@
                   <div class="box-body">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Device Identifier</label>
-                      <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="">
+                      <input type="text" name="identifier" class="form-control" id="exampleInputEmail1" placeholder="">
                     </div>
                     
                     <div class="form-group">
                         <label>location type</label>
-                        <select id="location_type" name="location_type" class="form-control">
+                        <select id="locationType" name="locationType" class="form-control">
                             <%
-                            var location_types = ['公交站', '公交车', '电梯', '路名牌'];
-                            while (location_types.length){
-                                location_type = location_types.pop();
+                            var locationTypes = ['公交站', '公交车', '电梯', '路名牌'];
+                            while (locationTypes.length){
+                                locationType = locationTypes.pop();
                                 
                             %>
-                            <option value="<%=location_type%>"><%=location_type%></option>
+                            <option value="<%=locationType%>"><%=locationType%></option>
                             <%
                             }
                             %>
@@ -113,7 +113,7 @@
                     
                     <div class="form-group">
                       <label for="exampleInputPassword1">CangBaoJie Name</label>
-                      <input type="text" name="cangbaojie_name" class="form-control" id="exampleInputPassword1" placeholder="">
+                      <input type="text" name="cangbaojieName" class="form-control" id="exampleInputPassword1" placeholder="">
                     </div>
                     
 

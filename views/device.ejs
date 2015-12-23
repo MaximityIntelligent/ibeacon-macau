@@ -72,7 +72,6 @@
                         <th>State</th>
                         <th>City</th>
                         <th></th>
-                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -84,13 +83,13 @@
                           device = devices.pop();
                       %>
                       <tr>
-                        <td><a href="/device/read/<%=device.id%>"><%=device.name%></a></td>
+                        <td><a href="/device/<%=device.id%>"><%=device.name%></a></td>
                         <td><%=device.type%></td>
                         <td><%=device.location%></td>
                         
                         <td><%=device.state%></td>
                         <td><%=device.city%></td>
-                        <td><a href="/device/edit/<%=device.id%>">update</a></td>
+
                         <td><form method="post" action="/device/destroy/<%=device.id%>"><input type="submit" value="delete"/></form></td>
                       </tr>
                       <%

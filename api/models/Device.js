@@ -8,18 +8,18 @@
 module.exports = {
   identity: 'device',
   attributes: {
+    identifier: {type: 'string', required: true},
     uuid: {type: 'string', required: true},
     major: {type: 'string', required: true},
     minor: {type: 'string', required: true},
-    name: {type: 'string', required: true},
     state: {type: 'string', required: true},
     city: {type: 'string', required: true},
     region: {type: 'string', required: true},
     street: {type: 'string', required: true},
-    location_type: {type: 'string', required: true},
+    locationType: {type: 'string', required: true},
     location: {type: 'string', required: true},
-    cangbaojie_name: 'string'
-  }
-};
+    cangbaojieName: 'string'
+}
+}
 
     
