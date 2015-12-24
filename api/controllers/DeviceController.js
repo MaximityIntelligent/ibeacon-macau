@@ -18,9 +18,10 @@ module.exports = {
         var region = req.param('region');
         var street = req.param('street');
         var location = req.param('location');
+        var point = req.param('point');
 		var cangbaojieName = req.param('cangbaojieName');
         
-        device.create({identifier: identifier, major: major, minor: minor, uuid: uuid, state: state, city: city, region: region, street: street, location: location,  locationType: locationType, cangbaojieName: cangbaojieName}).exec(function(err, device2){
+        device.create({identifier: identifier, major: major, minor: minor, uuid: uuid, state: state, city: city, region: region, street: street, location: location, point: point, locationType: locationType, cangbaojieName: cangbaojieName}).exec(function(err, device2){
             if (err) {
                 //code
                 
@@ -50,9 +51,10 @@ module.exports = {
 		var major = req.param('major');
         var minor = req.param('minor');
 		var uuid = req.param('uuid');
+        var point = req.param('point');
 		var cangbaojieName = req.param('cangbaojieName');		
         
-        device.update({id: id},{identifier: identifier, major: major, minor: minor, uuid: uuid, location: location, state: state, city: city, region: region, street: street, cangbaojieName: cangbaojieName, locationType: locationType, location: location}).exec(function(err, device2){
+        device.update({id: id},{identifier: identifier, major: major, minor: minor, uuid: uuid, location: location, state: state, city: city, region: region, street: street, cangbaojieName: cangbaojieName, locationType: locationType, location: location, point: point}).exec(function(err, device2){
             if (err) {
                 res.view('500');
                 return;

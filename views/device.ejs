@@ -66,11 +66,11 @@
                   <table id="device-table" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Device Identifier</th>
+                        <th>Identifier</th>
                         <th>Type</th>
-                        <th>Location</th>
-                        <th>State</th>
                         <th>City</th>
+                        <th>Street</th>
+                        <th>Location</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -83,13 +83,11 @@
                           device = devices.pop();
                       %>
                       <tr>
-                        <td><a href="/device/<%=device.id%>"><%=device.name%></a></td>
-                        <td><%=device.type%></td>
-                        <td><%=device.location%></td>
-                        
-                        <td><%=device.state%></td>
+                        <td><a href="/device/<%=device.id%>"><%=device.identifier%></a></td>
+                        <td><%=device.locationType%></td>
                         <td><%=device.city%></td>
-
+                        <td><%=device.street%></td>
+                        <td><%=device.location%></td>
                         <td><form method="post" action="/device/destroy/<%=device.id%>"><input type="submit" value="delete"/></form></td>
                       </tr>
                       <%
@@ -133,10 +131,10 @@
         $('#device-table').DataTable({
           "paging": true,
           "lengthChange": false,
-          "searching": false,
+          "searching": true,
           "ordering": true,
           "info": true,
-          "autoWidth": false
+          "autoWidth": true
         });
         $('#menu').load('user-menu');
       });

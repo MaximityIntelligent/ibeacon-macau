@@ -36,6 +36,14 @@ module.exports.connections = {
       password: '27182818',
       database: 'adomain'
   },
+  mongo_dev: {
+      module: 'sails-mongo',
+      host: 'ds031883.mongolab.com',
+      port: 31883,
+      user: 'admin',
+      password: '27182818',
+      database: 'adomain'
+  },
   localDiskDb: {
     adapter: 'sails-disk'
   },

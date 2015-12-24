@@ -8,7 +8,7 @@
 module.exports = {
   identity: 'device',
   attributes: {
-    identifier: {type: 'string', required: true},
+    identifier: {type: 'string', unique: true, required: true},
     uuid: {type: 'string', required: true},
     major: {type: 'string', required: true},
     minor: {type: 'string', required: true},
@@ -18,7 +18,8 @@ module.exports = {
     street: {type: 'string', required: true},
     locationType: {type: 'string', required: true},
     location: {type: 'string', required: true},
-    cangbaojieName: 'string'
+    cangbaojieName: 'string',
+    point: 'string' //Kit end
 }
 }
 

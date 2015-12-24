@@ -5298,9 +5298,8 @@ var state =
       }
    ]
     
-},
-{
-    name:"广西省"
+},{
+  name:"選擇省份"
 }
 ];
 module.exports = {

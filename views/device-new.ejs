@@ -45,7 +45,7 @@
           
           <div class="row">
                 <!-- left column -->
-            <div class="col-md-6">
+            <div class="col-md-8">
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- /.box-header -->
@@ -61,7 +61,7 @@
                         <label>location type</label>
                         <select id="locationType" name="locationType" class="form-control">
                             <%
-                            var locationTypes = ['公交站', '公交车', '电梯', '路名牌'];
+                            var locationTypes = ['公交车', '电梯', '路名牌','公交站'];
                             while (locationTypes.length){
                                 locationType = locationTypes.pop();
                                 
@@ -76,6 +76,8 @@
                       <label for="exampleInputPassword1">UUID</label>
                       <input type="text" name="uuid" class="form-control" id="exampleInputPassword1" placeholder="">
                     </div>
+                    <div class="form-inline">
+
                     <div class="form-group">
                       <label for="exampleInputPassword1">Major</label>
                       <input type="text" name="major" class="form-control" id="exampleInputPassword1" placeholder="">
@@ -84,7 +86,9 @@
                       <label for="exampleInputPassword1">Minor</label>
                       <input type="text" name="minor" class="form-control" id="exampleInputPassword1" placeholder="">
                     </div>
-                    
+                    </div>
+                    <br>
+                    <div class="form-inline">
                     <div class="form-group">
                       <label>State</label>
                       <select id="state" class="form-control" name="state">
@@ -105,15 +109,20 @@
                       <select id="street" class="form-control" name="street">
                       </select>
                     </div>
+                    </div>
                     <div class="form-group">
                       <label>Location</label>
                       <input type="text" name="location" class="form-control" id="exampleInputPassword1" placeholder="">
                       </select>
                     </div>
-                    
+                    <div class="form-group">
+                      <label>Point</label>
+                      <input type="text" name="point" class="form-control" id="exampleInputPassword1" placeholder="BaiDu Coordinate">
+                      </select>
+                    </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">CangBaoJie Name</label>
-                      <input type="text" name="cangbaojieName" class="form-control" id="exampleInputPassword1" placeholder="">
+                      <input disabled type="text" name="cangbaojieName" class="form-control" id="exampleInputPassword1" placeholder="">
                     </div>
                     
 
