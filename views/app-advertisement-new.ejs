@@ -1,0 +1,254 @@
+
+    <div class="wrapper">
+      <header class="main-header">
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>M</b>I</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>Maximity</b>Ibeacon</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+              
+              <!-- User Account: style can be found in dropdown.less -->
+              
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside id="menu" class="main-sidebar">
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            App's Advertisement
+            <small>new</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="/">home</a></li>
+            <li><a href="/advertisement">advertisement</a></li>
+            <li class="active"><a href="#">new</a></li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <!-- Small boxes (Stat box) -->
+          
+          <div class="row">
+                <!-- left column -->
+            <div class="col-md-6">
+              <!-- general form elements -->
+              <div class="box box-primary">
+                <form role="form" name="ad_form" id="ad_form" action="/app-advertisement?app=<%=req.param('app')%>" method="post" onSubmit="javascript: return appendToForm(); ">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Title</label>
+                      <input type="text" name="title" class="form-control" id="exampleInputEmail1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Image Url</label>
+                      <input type="text" name="image_url" class="form-control" id="exampleInputPassword1" placeholder="">
+                    </div>
+                          
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Text</label>
+                      <input type="text" name="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Frequency</label>
+                      <input type="text" name="frequency" class="form-control" id="exampleInputPassword1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                    <label>Valid Date</label>
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                      </div>
+                      <input type="text" name="valid_date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div><!-- /.input group -->
+                    </div><!-- /.form group -->
+                    
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Pick Location</label>
+                      <input type="text" name="pick_location" class="form-control" id="exampleInputPassword1" placeholder="">
+                    </div>
+                   <!-- <div class="form-group">
+                      <label for="exampleInputPassword1">Pick Location</label>-->
+                    <button id="deploy" type="button" value="fdsfs" >Deploy to Device</button>
+                    <button id="deploy-group" type="button" value="fdsfs" >Deploy to Device Group</button>
+                    <!--</div>-->
+                    
+                    <div id="deploy-modal" class="modal modal-primary ">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          
+                          <div class="modal-body">
+                            <table id="advertisement-table" class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th></th>
+                                  <th>Name</th>
+                                  <th>Type</th>
+                                  <th>Location</th>
+                                  
+                                </tr>
+                              </thead>
+                              
+                              <tbody>
+                                <%
+                                  var device;
+                                  while (devices.length) {
+                                    //code
+                                    device = devices.pop();
+                                %>
+                                <tr>
+                                  <td><input type="checkbox" name="device" value="<%=device.id%>"></td>
+                                  <td><%=device.name%></td>
+                                  <td><%=device.type%></td>
+                                  <td><%=device.location%></td>
+                                  
+                                </tr>
+                                
+                                <%
+                                  }
+                                %>
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" id="deploy-close">Close</button>
+                          </div>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->   
+                    
+                    <div id="deploy-group-modal" class="modal modal-primary ">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          
+                          <div class="modal-body">
+                            <table id="advertisement-table2" class="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th></th>
+                                  <th>location</th>                              
+                                </tr>
+                              </thead>
+                              
+                              <tbody>
+                                <%
+                                  var location;
+                                  while (locations.length) {
+                                    //code
+                                    location = locations.pop();
+                                %>
+                                <tr>
+                                  <td><input type="checkbox" name="device_group" value="<%=location.id%>"></td>
+                                  <td><%=location.name%></td>
+                                </tr>
+                                
+                                <%
+                                  }
+                                %>
+                               
+                              </tbody>
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" id="deploy-group-close">Close</button>
+                          </div>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->   
+                            
+                    
+                    
+                  </div><!-- /.box-body -->
+
+                  <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div><!-- /.box -->
+
+            </div>
+          </div><!-- /.row -->
+         
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      <footer class="main-footer">
+
+        <strong>Copyright &copy; 2014-2015 Maximity</strong> All rights reserved.
+      </footer>
+
+      <!-- Control Sidebar -->
+
+    </div><!-- ./wrapper -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="../jquery-ui/ui/dialog.js"></script>
+    <!--<script src="../jquery-ui-1.11.4/jquery-ui.js"></script>-->
+    
+     
+  <script>
+    function appendToForm() {
+      $("#deploy-modal").appendTo("#ad_form");
+      $("#deploy-group-modal").appendTo("#ad_form");
+
+      return true;
+      
+    }
+    $(function () {
+        $("[data-mask]").inputmask();
+        $("#menu").load("/user-menu");
+        var dialog;
+        dialog = $("#deploy-modal").dialog({autoOpen: false,
+        height: 500,
+        width: 800,
+        modal: true});
+        var dialog2;
+        dialog2 = $("#deploy-group-modal").dialog({autoOpen: false,
+        height: 500,
+        width: 800,
+        modal: true});
+        $("#deploy").button().on( "click", function() {
+              dialog.dialog("open");
+        });
+        $("#deploy-close").button().on("click", function(){
+              dialog.dialog("close");
+        })
+        $("#deploy-group").button().on( "click", function() {
+              dialog2.dialog("open");
+        });
+        $("#deploy-group-close").button().on("click", function(){
+              dialog2.dialog("close");
+        })
+      });
+    </script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/demo.js"></script>
+    
+    <!-- Morris.js charts -->
+    
+
+    <!-- AdminLTE App -->
+    <script src="../js/app.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="../js/pages/dashboard.js"></script>
+    
+
